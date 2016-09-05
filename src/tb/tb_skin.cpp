@@ -162,7 +162,9 @@ bool TBSkin::LoadInternal(const char *skin_file)
 				for (int i = 0; i < arr->GetLength(); i++)
 				{
 					int candidate_dpi = arr->GetValue(i)->GetInt();
-					if (!best_supported_dpi || ABS(candidate_dpi - screen_dpi) < ABS(best_supported_dpi - screen_dpi))
+					if (!best_supported_dpi ||
+					    (candidate_dpi < screen_dpi &&
+					     ABS(candidate_dpi - screen_dpi) < ABS(best_supported_dpi - screen_dpi))) {
 						best_supported_dpi = candidate_dpi;
 				}
 				supported_dpi = best_supported_dpi;
