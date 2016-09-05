@@ -46,7 +46,7 @@ STBFontRenderer::STBFontRenderer()
 
 STBFontRenderer::~STBFontRenderer()
 {
-	delete [] render_data;
+	if(render_data) free(render_data); // STB uses malloc
 }
 
 TBFontMetrics STBFontRenderer::GetMetrics()
@@ -62,7 +62,7 @@ TBFontMetrics STBFontRenderer::GetMetrics()
 
 bool STBFontRenderer::RenderGlyph(TBFontGlyphData *data, UCS4 cp)
 {
-	delete [] render_data;
+	if(render_data) free(render_data); // STB uses malloc
 	render_data = stbtt_GetCodepointBitmap(&font, 0, scale, cp, &data->w, &data->h, 0, 0);
 	data->data8 = render_data;
 	data->stride = data->w;
