@@ -439,6 +439,7 @@ bool TBRadioCheckBox::OnEvent(const TBWidgetEvent &ev)
 		if (!(GetGroupID() && GetValue()))
 		{
 			SetValue(!GetValue());
+			return true;
 		}
 	}
 	return false;
