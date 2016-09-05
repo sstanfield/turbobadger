@@ -118,6 +118,12 @@ void TBRendererBatcher::Translate(int dx, int dy)
 	m_translation_y += dy;
 }
 
+void TBRendererBatcher::GetTranslate(int *dx, int *dy) 
+{
+	*dx = m_translation_x;
+	*dy = m_translation_y;
+}	
+
 void TBRendererBatcher::SetOpacity(float opacity)
 {
 	int8 opacity8 = (uint8) (opacity * 255);

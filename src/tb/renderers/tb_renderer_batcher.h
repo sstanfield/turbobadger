@@ -55,6 +55,7 @@ public:
 	virtual void EndPaint();
 
 	virtual void Translate(int dx, int dy);
+	virtual void GetTranslate(int *dx, int *dy);
 
 	virtual void SetOpacity(float opacity);
 	virtual float GetOpacity();

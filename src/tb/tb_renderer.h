@@ -64,6 +64,7 @@ public:
 
 	/** Translate all drawing with the given offset */
 	virtual void Translate(int dx, int dy) = 0;
+	virtual void GetTranslate(int *dx, int *dy) = 0;
 
 	/** Set the current opacity that should apply to all drawing (0.f-1.f). */
 	virtual void SetOpacity(float opacity) = 0;
@@ -139,6 +140,15 @@ public:
 
 	/** End the hint scope started with BeginBatchHint. */
 	virtual void EndBatchHint() {}
+
+	/** A Widget will be working with the native graphics (GL, DX, etc).
+	 *  Let the renderer know so it can prepare. */
+	virtual void BeginNativeRender() {}
+
+	/** A Widget is done  working with the native graphics (GL, DX, etc).
+	 *  Let the renderer know so it can prepare. */
+	virtual void EndNativeRender() {}
+
 private:
 	TBLinkListOf<TBRendererListener> m_listeners;
 };
